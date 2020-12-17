@@ -2,10 +2,11 @@ import express from 'express';
 import pacienteRouter from './routes/pacientes';
 import diagnosticoRouter from './routes/diagnosticos';
 import cors from 'cors';
+import * as path from 'path';
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.use(express.static('build'));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.get('/api/ping', (_req, res) => {
   console.log('someone pinged here');
