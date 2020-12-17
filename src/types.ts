@@ -4,9 +4,9 @@ export interface Diagnostico {
 }
 
 export enum Genero {
-  Masculino = 'masculino',
-  Femenino = 'femenino',
-  Otro = 'otro',
+  Masculino = 'Masculino',
+  Femenino = 'Femenino',
+  Otro = 'Otro',
 }
 
 interface BaseIngreso {

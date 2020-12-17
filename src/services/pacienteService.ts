@@ -38,9 +38,22 @@ const addIngreso = (
   }
 };
 
+const deletePaciente = (id: string): Paciente => {
+  const paciente = pacientes.find((p) => p.id === id);
+  if (paciente) {
+    const index = pacientes.indexOf(paciente);
+    pacientes.splice(index, 1);
+    console.log(paciente);
+    return paciente;
+  } else {
+    throw new Error('Paciente no encontrado');
+  }
+};
+
 export default {
   getPacientes,
   addPaciente,
   getPaciente,
   addIngreso,
+  deletePaciente,
 };

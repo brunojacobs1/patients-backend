@@ -15,9 +15,11 @@ pacienteRouter.get('/:id', (req, res) => {
 });
 
 pacienteRouter.post('/', (req, res) => {
+  console.log('request');
   try {
     const nuevoPaciente = toNuevoPaciente(req.body);
     const pacienteAgregado = pacienteService.addPaciente(nuevoPaciente);
+
     res.json(pacienteAgregado);
   } catch (e) {
     res.status(400).send(e.message);
@@ -32,6 +34,15 @@ pacienteRouter.post('/:id/ingresos', (req, res) => {
       req.params.id
     );
     res.json(pacienteModificado);
+  } catch (e) {
+    res.status(400).send(e.message);
+  }
+});
+
+pacienteRouter.delete('/:id', (req, res) => {
+  try {
+    const pacienteEliminado = pacienteService.deletePaciente(req.params.id);
+    res.json(pacienteEliminado);
   } catch (e) {
     res.status(400).send(e.message);
   }
